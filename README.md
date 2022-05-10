@@ -1,1 +1,1 @@
-# IDLE KNIGHT
+# Idle Knight
