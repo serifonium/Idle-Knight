@@ -9,6 +9,7 @@ class Item {
 }
 
 
+
 setInterval(() => {
     update()
 }, 20);
