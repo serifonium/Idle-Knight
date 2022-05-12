@@ -19,6 +19,8 @@ function render() {
             ctx.fillRect(x*64+cx, y*64+cy, 64, 64)
             if(map[x][y].build === "town") {
                 ctx.drawImage(imgCache.townTile, x*64+cx, y*64+cy)
+            } if(map[x][y].build === "farm") {
+                ctx.drawImage(imgCache.farmTile, x*64+cx, y*64+cy)
             }
         }
     }
@@ -35,6 +37,10 @@ function render() {
     }
     ctx.globalAlpha = 1
 
+    renderUI()
+}
+
+function renderUI() {
     ctx.fillStyle = "#999999"
     ctx.beginPath()
     ctx.moveTo(window.innerWidth/2 - 600, 0)
@@ -51,6 +57,17 @@ function render() {
 
     ctx.fillStyle = "#000000"
     ctx.textAlign = "center"
-    ctx.font = "80px Arial"
-    ctx.fillText("Idle Knight", window.innerWidth/2, 80)
+    ctx.font = "60px Arial"
+    ctx.fillText(currency.coins+" gold", window.innerWidth/2, 70)
+    ctx.fillText(currency.food+" food", window.innerWidth/2, window.innerHeight - 20)
+
+    ctx.fillStyle = "#333333"
+    /*
+    for(let i = 0; i < 10; i++) {
+        ctx.fillRect(i*64+window.innerWidth/2 - 320, window.innerHeight - 64, 64, 2)
+        ctx.fillRect(i*64+window.innerWidth/2 - 320, window.innerHeight - 64, 2, 64)
+        ctx.fillRect(i*64+window.innerWidth/2 - 320, window.innerHeight - 64+62, 64, 2)
+        ctx.fillRect(i*64+62+window.innerWidth/2 - 320, window.innerHeight - 64, 2, 64)
+    }
+    */
 }
