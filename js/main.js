@@ -1,8 +1,13 @@
-map[10][5].build = "town"
-map[10][6].build = "farm"
-map[12][7].build = "farm"
-map[7][3].build = "farm"
-map[2][4].build = "farm"
+map[10][5].build = "Town"
+map[10][5].buildClass = towns[0]
+map[10][6].build = "Farm"
+map[10][6].buildClass = farms[0]
+map[12][7].build = "Farm"
+map[12][7].buildClass = farms[1]
+map[7][9].build = "Farm"
+map[7][9].buildClass = farms[2]
+map[2][4].build = "Farm"
+map[2][4].buildClass = farms[3]
 
 class Item {
     constructor(name, amount) {
@@ -13,7 +18,8 @@ class Item {
 
 
 var tileSelected = undefined
-var buildSelected = 0
+var selectionType = 0
+
 
 var currency = {
     coins: 0,
@@ -46,7 +52,10 @@ addEventListener("keydown", (e) => {
     } if(e.key === "d") {
         vx = -5
     }
-    if(e.key === "1") {}
+    if(e.key === "1") {selectionType = 0}
+    if(e.key === "2") {selectionType = 1}
+    if(e.key === "3") {selectionType = 2}
+    if(e.key === "4") {selectionType = 3}
 }) 
 addEventListener("keyup", (e) => {
     if(e.key === "w") {
@@ -57,5 +66,20 @@ addEventListener("keyup", (e) => {
         vy = 0
     } if(e.key === "d") {
         vx = 0
+    }
+})
+
+
+addEventListener("mousedown", (e) => {
+    let clickX = e.clientX
+    let clickY = e.clientY
+
+    for(let x in map) {
+        for(let y in map[x]) {
+            if(overlapping(x*64+cx, y*64+cy, 63, 63, clickX, clickY, 1, 1)) {
+                console.log(map[x][y])
+                tileSelected = map[x][y]
+            }
+        }
     }
 })

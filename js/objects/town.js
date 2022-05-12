@@ -12,7 +12,8 @@ dataCache.townRanks = [
 ]
 
 class Town {
-    constructor(x, y) {
+    constructor(name, x, y) {
+        this.name = name
         this.x = x
         this.y = y
         this.rank = 0
@@ -30,4 +31,4 @@ class Town {
     }
 }
 
-towns.push(new Town(10, 5))
+towns.push(new Town("uwu town", 10, 5))

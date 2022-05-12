@@ -1,5 +1,4 @@
 function update() {
-    console.log((vx < 0 && cx < mapWidth*64 - window.innerWidth), vx < 0, cx < mapWidth*64 - window.innerWidth)
     if((vx > 0 && cx < 0) || (vx < 0 && cx < mapWidth*64 - window.innerWidth)) {
         cx += vx
     }

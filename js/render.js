@@ -14,12 +14,12 @@ function render() {
 
     for(let x in map) {
         for(let y in map[x]) {
-            if(map[x][y].type === "grass") {ctx.fillStyle = "#50ad4c"}
-            else if(map[x][y].type === "water") {ctx.fillStyle = "#395985"}
+            if(map[x][y].type === "Grass") {ctx.fillStyle = "#50ad4c"}
+            else if(map[x][y].type === "Water") {ctx.fillStyle = "#395985"}
             ctx.fillRect(x*64+cx, y*64+cy, 64, 64)
-            if(map[x][y].build === "town") {
+            if(map[x][y].build === "Town") {
                 ctx.drawImage(imgCache.townTile, x*64+cx, y*64+cy)
-            } if(map[x][y].build === "farm") {
+            } if(map[x][y].build === "Farm") {
                 ctx.drawImage(imgCache.farmTile, x*64+cx, y*64+cy)
             }
         }
@@ -36,6 +36,10 @@ function render() {
         }
     }
     ctx.globalAlpha = 1
+
+    if(tileSelected !== undefined) {
+        tileSelected.renderMenu()
+    }
 
     renderUI()
 }
@@ -61,13 +65,18 @@ function renderUI() {
     ctx.fillText(currency.coins+" gold", window.innerWidth/2, 70)
     ctx.fillText(currency.food+" food", window.innerWidth/2, window.innerHeight - 20)
 
+    ctx.fillStyle = "#6193c2"
+    ctx.fillRect(selectionType*64+window.innerWidth/2 - 520, window.innerHeight - 64, 64, 64)
     ctx.fillStyle = "#333333"
-    /*
-    for(let i = 0; i < 10; i++) {
-        ctx.fillRect(i*64+window.innerWidth/2 - 320, window.innerHeight - 64, 64, 2)
-        ctx.fillRect(i*64+window.innerWidth/2 - 320, window.innerHeight - 64, 2, 64)
-        ctx.fillRect(i*64+window.innerWidth/2 - 320, window.innerHeight - 64+62, 64, 2)
-        ctx.fillRect(i*64+62+window.innerWidth/2 - 320, window.innerHeight - 64, 2, 64)
+    ctx.font = "20px Arial"
+    for(let i = 0; i < 4; i++) {
+        ctx.fillText(i+1, i*64+window.innerWidth/2 - 490, window.innerHeight - 72)
+        ctx.fillRect(i*64+window.innerWidth/2 - 520, window.innerHeight - 64, 64, 2)
+        ctx.fillRect(i*64+window.innerWidth/2 - 520, window.innerHeight - 64, 2, 64)
+        ctx.fillRect(i*64+window.innerWidth/2 - 520, window.innerHeight - 64+62, 64, 2)
+        ctx.fillRect(i*64+62+window.innerWidth/2 - 520, window.innerHeight - 64, 2, 64)
     }
-    */
+    
+    ctx.drawImage(imgCache.selectIcon, 0*64+window.innerWidth/2 - 520, window.innerHeight - 64)
+    
 }
