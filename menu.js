@@ -34,7 +34,7 @@ function logIn() {
 function signUp() {
     let user = document.getElementById("signUser").value
     let pass = document.getElementById("signPass").value
-    if ((pass != undefined || "") && (user != undefined || "")) {
+    if ((pass != undefined || " ") && (user != undefined || " ")) {
         console.log("Yeah")
         socket.emit("sendData", {type: "signup", username: user, password: pass})
     }
