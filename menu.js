@@ -23,8 +23,11 @@ const socket = io("https://idle-knight.herokuapp.com")
 addEventListener("keydown", (e) => {
     if(e.key === "Enter") {
 
+    } else if (e.key == "Space") {
+        e.preventDefault();
     }
 })
+
 
 function logIn() {
     let user = document.getElementById("logUser").value
