@@ -8,6 +8,7 @@ class Tile {
         this.build = ""
         this.tags = {}
         this.renderMenu = undefined
+        this.renderBuildMenu = undefined
     }
 }
 var mapHeight = 200
@@ -23,6 +24,7 @@ for(let x = 0; x < mapWidth; x++) {
 for(let x in map) {
     for(let y in map[x]) {
         map[x][y].type = "Grass"
+        map[x][y].tags.farmMulti = Math.round(Math.random()*35+5)/10
         map[x][y].renderMenu = function() {
             tile = map[x][y]
             let XOff = x*64+cx - 128 + 32
@@ -33,6 +35,9 @@ for(let x in map) {
             ctx.font = "30px Arial"
             if(tile.build === "") {
                 ctx.fillText(tile.type, XOff+128, YOff+32)
+                ctx.font = "15px Arial"
+                ctx.fillText("Farm Multi: " + tile.tags.farmMulti + "x", XOff+128, YOff+48)
+                ctx.font = "30px Arial"
             } else {
                 if(tile.build === "Town") {
                     ctx.fillText(tile.buildClass.name, XOff+128, YOff+32)
@@ -48,12 +53,17 @@ for(let x in map) {
                 if(tile.build === "Town") {
                     
                     ctx.fillText(dataCache.townRanks[tile.buildClass.rank], XOff+128, YOff+64)
+                    ctx.fillText("Level: "+tile.buildClass.level, XOff+128, YOff+80)
+                    ctx.fillText("Population: "+tile.buildClass.population, XOff+128, YOff+96)
                     drawBox(XOff+128-72, YOff+160-48, 128+16, 32)
                     ctx.fillStyle = "#ffffff"
                     ctx.fillText("Level Up: " + Math.floor(Math.pow(tile.buildClass.level + 1, 1.5) * 5 ) + " gold", XOff+128, YOff+160-24)
                 } 
             }
             
+        } 
+        map[x][y].renderBuildMenu = function() {
+
         }
     }
 }

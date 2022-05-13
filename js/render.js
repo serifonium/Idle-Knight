@@ -62,8 +62,8 @@ function renderUI() {
     ctx.fillStyle = "#000000"
     ctx.textAlign = "center"
     ctx.font = "60px Arial"
-    ctx.fillText(currency.coins+" gold", window.innerWidth/2, 70)
-    ctx.fillText(currency.food+" food", window.innerWidth/2, window.innerHeight - 20)
+    ctx.fillText(Math.round(currency.coins)+" gold", window.innerWidth/2, 70)
+    ctx.fillText(Math.round(currency.food)+" food", window.innerWidth/2, window.innerHeight - 20)
 
     ctx.fillStyle = "#6193c2"
     ctx.fillRect(selectionType*64+window.innerWidth/2 - 520, window.innerHeight - 64, 64, 64)
