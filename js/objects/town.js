@@ -35,7 +35,7 @@ class Town {
         if(this.population/2 < currency.food) {
             currency.food += -this.population/2
         } else {
-            this.population = Math.round(this.population/2)
+            this.population = Math.round(this.population/1.1)
         }
     }
 }
