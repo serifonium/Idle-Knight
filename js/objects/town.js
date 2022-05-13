@@ -17,9 +17,10 @@ class Town {
         this.x = x
         this.y = y
         this.rank = 0
-        this.income = {base: 8, range: {pos: 2, neg: 2}}
+        this.population = Math.round(Math.random()*20)
+        this.income = {base: Math.round(8 * (this.population / 10)), range: {pos: 2, neg: 2}}
         this.level = 0
-
+        
     }
     levelUp() {
         this.level += 1
@@ -27,8 +28,16 @@ class Town {
             this.rank++;
             this.level = 0;
         }
-        this.income.base += this.rank * this.level/100 + 1
+        this.income.base += Math.round((this.rank * this.level/100 + 1)*(this.population / 10))
+        this.population += this.level
+    }
+    update() {
+        if(this.population/2 < currency.food) {
+            currency.food += -this.population/2
+        } else {
+            this.population = Math.round(this.population/2)
+        }
     }
 }
 
-towns.push(new Town("uwu town", 10, 5))
+towns.push(new Town("owo town", 10, 5))

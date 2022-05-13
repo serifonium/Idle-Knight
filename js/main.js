@@ -9,17 +9,11 @@ map[7][9].buildClass = farms[2]
 map[2][4].build = "Farm"
 map[2][4].buildClass = farms[3]
 
-class Item {
-    constructor(name, amount) {
-        this.name = name
-        this.amount = amount
-    }
-}
+
 
 
 var tileSelected = undefined
 var selectionType = 0
-
 
 var currency = {
     coins: 0,
@@ -34,6 +28,7 @@ setInterval(() => {
 setInterval(() => {
     for(let town of towns) {
         currency.coins += town.income.base + Math.floor(Math.random()*(town.income.range.pos + town.income.range.neg)) + town.income.range.neg
+        town.update()
     } for(let farm of farms) {
         currency.food += farm.income.base + Math.floor(Math.random()*(farm.income.range.pos + farm.income.range.neg)) + farm.income.range.neg
     }
@@ -52,10 +47,14 @@ addEventListener("keydown", (e) => {
     } if(e.key === "d") {
         vx = -5
     }
-    if(e.key === "1") {selectionType = 0}
-    if(e.key === "2") {selectionType = 1}
-    if(e.key === "3") {selectionType = 2}
-    if(e.key === "4") {selectionType = 3}
+    if(e.key === "1") {selectionType = 0
+        tileSelected = undefined}
+    if(e.key === "2") {selectionType = 1
+        tileSelected = undefined}
+    if(e.key === "3") {selectionType = 2
+        tileSelected = undefined}
+    if(e.key === "4") {selectionType = 3
+        tileSelected = undefined}
 }) 
 addEventListener("keyup", (e) => {
     if(e.key === "w") {
@@ -73,13 +72,32 @@ addEventListener("keyup", (e) => {
 addEventListener("mousedown", (e) => {
     let clickX = e.clientX
     let clickY = e.clientY
+    let interactMenu = false
 
-    for(let x in map) {
-        for(let y in map[x]) {
-            if(overlapping(x*64+cx, y*64+cy, 63, 63, clickX, clickY, 1, 1)) {
-                console.log(map[x][y])
-                tileSelected = map[x][y]
+    if(selectionType === 0) {
+        if(tileSelected !== undefined) {
+            if(tileSelected.build === "Town") {
+                let XOff = tileSelected.x*64+cx - 128 + 32
+                let YOff = tileSelected.y*64+cy - 160 - 16
+                if(overlapping(XOff+128-72, YOff+160-48, 128+16, 32, clickX, clickY, 1, 1)) {
+                    console.log(tileSelected.buildClass)
+                    interactMenu = true
+                    if(currency.coins > Math.floor(Math.pow(tile.buildClass.level + 1, 1.5) * 5 )) {
+                        currency.coins += -(Math.floor(Math.pow(tile.buildClass.level + 1, 1.5) * 5 ))
+                        tileSelected.buildClass.levelUp()
+                    }
+                }
             }
         }
+        if(!interactMenu) {
+            for(let x in map) {
+                for(let y in map[x]) {
+                    if(overlapping(x*64+cx, y*64+cy, 63, 63, clickX, clickY, 1, 1)) {
+                        console.log(map[x][y])
+                        tileSelected = map[x][y]
+                    }
+                }
+            }
+        }   
     }
 })
