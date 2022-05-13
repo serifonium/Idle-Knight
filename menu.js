@@ -23,8 +23,11 @@ const socket = io("https://idle-knight.herokuapp.com")
 addEventListener("keydown", (e) => {
     if(e.key === "Enter") {
 
+    } else if (e.key == "Space") {
+        e.preventDefault();
     }
 })
+
 
 function logIn() {
     let user = document.getElementById("logUser").value
@@ -34,7 +37,7 @@ function logIn() {
 function signUp() {
     let user = document.getElementById("signUser").value
     let pass = document.getElementById("signPass").value
-    if ((pass != undefined) && (user != undefined)) {
+    if ((pass != undefined || " ") && (user != undefined || " ")) {
         console.log("Yeah")
         socket.emit("sendData", {type: "signup", username: user, password: pass})
     }
