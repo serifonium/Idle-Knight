@@ -1,3 +1,4 @@
+console.log("test")
 document.getElementById("signUser").style.left = (window.innerWidth/2 - 180) + "px"
 document.getElementById("signPass").style.left = (window.innerWidth/2 - 180) + "px"
 
