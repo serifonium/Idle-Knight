@@ -4,7 +4,7 @@ class Farm {
     constructor(x, y) {
         this.x = x
         this.y = y
-        this.income = {base: 3*map[x][y].tags.farmMulti, range: {pos: 1, neg: 1}}
+        this.income = {base: 8*map[x][y].tags.farmMulti, range: {pos: 1, neg: 1}}
         this.level = 0
 
     }
