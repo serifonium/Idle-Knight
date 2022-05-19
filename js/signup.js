@@ -1,16 +1,16 @@
 console.log("test")
-document.getElementById("signUser").style.left = (window.innerWidth/2 - 180) + "px"
-document.getElementById("signPass").style.left = (window.innerWidth/2 - 180) + "px"
+document.getElementById("signUser").style.left = (window.innerWidth/2) + "px"
+document.getElementById("signPass").style.left = (window.innerWidth/2) + "px"
 
 
-document.getElementById("signUser").style.top = (window.innerHeight/2 - 40) + "px"
-document.getElementById("signPass").style.top = (window.innerHeight/2 + 20) + "px"
+document.getElementById("signUser").style.top = (window.innerHeight/2) + "px"
+document.getElementById("signPass").style.top = (window.innerHeight/2) + "px"
 
-document.getElementById("signUpHeading").style.top = (window.innerHeight/2 - 120) + "px"
-document.getElementById("signUpHeading").style.left = (window.innerWidth/2 - 160) + "px"
+document.getElementById("signUpHeading").style.top = (window.innerHeight/2) + "px"
+document.getElementById("signUpHeading").style.left = (window.innerWidth/2) + "px"
 
-document.getElementById("signUp").style.top = (window.innerHeight/2 + 60) + "px"
-document.getElementById("signUp").style.left = (window.innerWidth/2 - 208) + "px"
+document.getElementById("signUp").style.top = (window.innerHeight/2) + "px"
+document.getElementById("signUp").style.left = (window.innerWidth/2) + "px"
 
 const socket = io("https://idle-knight.herokuapp.com")
 

@@ -1,11 +1,11 @@
-document.getElementById("logIn").style.top = (window.innerHeight/2 + 60) + "px"
-document.getElementById("logIn").style.left = (window.innerWidth/2 - 8) + "px"
-document.getElementById("logUser").style.left = (window.innerWidth/2 + 20) + "px"
-document.getElementById("logPass").style.left = (window.innerWidth/2 + 20) + "px"
-document.getElementById("logUser").style.top = (window.innerHeight/2 - 40) + "px"
-document.getElementById("logPass").style.top = (window.innerHeight/2 + 20) + "px"
-document.getElementById("LogInHeading").style.top = (window.innerHeight/2 - 120) + "px"
-document.getElementById("LogInHeading").style.left = (window.innerWidth/2 + 40) + "px"
+document.getElementById("logIn").style.top = (window.innerHeight/2) + "px"
+document.getElementById("logIn").style.left = (window.innerWidth/2) + "px"
+document.getElementById("logUser").style.left = (window.innerWidth/2) + "px"
+document.getElementById("logPass").style.left = (window.innerWidth/2) + "px"
+document.getElementById("logUser").style.top = (window.innerHeight/2) + "px"
+document.getElementById("logPass").style.top = (window.innerHeight/2) + "px"
+document.getElementById("LogInHeading").style.top = (window.innerHeight/2) + "px"
+document.getElementById("LogInHeading").style.left = (window.innerWidth/2) + "px"
 
 
 const socket = io("https://idle-knight.herokuapp.com")
